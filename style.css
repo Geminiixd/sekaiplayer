@@ -3,219 +3,324 @@
   padding: 0;
   box-sizing: border-box;
   direction: ltr;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.5s;
 }
 
 :root {
-    --white: #ffff;
-    --black: #000
+  --text: #030303;
+  --background: #fbfbfe;
+  --primary: #1b1a2e;
+  --secondary: #535266;
+  --accent: #2b26c0;
+}
 
+.dark-mode {
+  --text: #fcfcfc;
+  --background: #010104;
+  --primary: #d2d1e5;
+  --secondary: #9a99ad;
+  --accent: #443fd9;
 }
 
 .myplayer video {
   width: 100%;
-
 }
 
 .myplayer {
-    margin: 10px;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .start {
-    border: none;
-    border-radius: 10px;
-    background-color: var(--black);
-    padding: 10px 30px;
-    margin-top: 10px;
-    color: var(--white);
-    font-size: large;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--background);
+  padding: 10px 30px;
+  margin-top: 10px;
+  color: var(--text);
+  font-size: large;
 }
 
 .light {
-   background-color: var(--white);
-   color: var(--black); 
-   border-radius: 10px;
-   padding: 10px 30px;
-   margin-top: 10px;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 10px;
+  padding: 10px 30px;
+  margin-top: 10px;
 }
 
+button {
+  background-color: var(--primary);
+  color: var(--background);
+  border-radius: 10px;
+  border: none;
+  padding: 10px 30px;
+  margin-top: 10px;
+  box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
+}
 .mode {
-   margin-top: 10px;
-   border: none;
-   border-radius: 10px;
-   background-color: var(--black);
-   padding: 10px 30px;
-  
-   color: var(--white);
-   font-size: large;
-   
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--black);
+  padding: 10px 30px;
+
+  color: var(--white);
+  font-size: large;
 }
 
 .dark {
-    background-color: var(--black);
-    color: var(--white);
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .active {
-    display: block;
+  display: block;
 }
 
 .alert {
-    display: none;
+  display: none;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 @keyframes height {
-    from{height: 40px;}
-    to {height: 90px;}
+  from {
+    height: 40px;
+  }
+  to {
+    height: 90px;
+  }
 }
 
 .link {
-    border-radius: 10px;
-    padding: 10px 5px;
-    margin-top: 10px;
-    width: 15%;
-    transition: all 0.5s ;
-    border: none;
-    border: 2px rgba(55, 55, 55, 0.37) solid;
+  border-radius: 10px;
+  padding: 10px 5px;
+  margin-top: 10px;
+  width: 15%;
+  transition: all 0.5s;
+  border: none;
+  border: 2px rgba(55, 55, 55, 0.37) solid;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .link:focus {
   width: 35%;
-  transition: all 0.5s ;
+  transition: all 0.5s;
 }
 
 .myplayer {
-    display: flex;
-    position: relative;
-    direction: ltr;
-    overflow: hidden;
-    color: white;
+  display: flex;
+  position: relative;
+  direction: ltr;
+  overflow: hidden;
+  color: white;
 }
 
- .myplayer .player-controls {
-    position: absolute;
-    bottom: 0;
-    
-    background-color: rgba(0, 0, 0, 0.478);
-    width: 100%;
+.myplayer .player-controls {
+  position: absolute;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.478);
+  width: 100%;
 }
 
 .myplayer .controls-progressbar {
-    height: 6px;
-    width: 100%;
-    background: #e1e1e1;
+  height: 6px;
+  width: 100%;
+  background: #e1e1e1;
 }
-
 
 .myplayer .current-progressbar {
-     -webkit-appearance: none;
-      -moz-apperance: none;
-      height: 6px;
-      margin: 0;
-      position: absolute;
-      width: 100%;
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  height: 6px;
+  margin: 0;
+  position: absolute;
+  width: 100%;
 
-      background: linear-gradient(90deg, rgba(230,126,34,1) 0%, #e1e1e1 0%);
+  background: linear-gradient(90deg, rgb(12, 35, 77) 0%, #e1e1e1 0%);
 }
 
-
-
 .myplayer .current-progressbar::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    background-color: transparent;
-    height: 13px;
-    width: 13px;
+  -webkit-appearance: none !important;
+  background-color: transparent;
+  height: 13px;
+  width: 13px;
 }
 
 .control-btns {
-    display: flex;
-    margin: 20px;
-    justify-content: space-between;
-   
+  display: flex;
+  margin: 20px;
+  justify-content: space-between;
 }
 
 .control-btns .left {
-    display: flex;
-    margin-left: 10px;
-   align-items: center;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
 }
 
 .control-btns .right {
-    display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.rewind, .forward {
-    margin-left: 20px;
+.rewind,
+.forward {
+  margin-left: 20px;
 }
 
 .timer {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .volume {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
-.volume:hover, .rewind:hover, .forward:hover, .fullscreen:hover, .play:hover {
-    cursor: pointer;
+.volume:hover,
+.rewind:hover,
+.forward:hover,
+.fullscreen:hover,
+.play:hover {
+  cursor: pointer;
 }
 
-.volume, .rewind, .forward, .fullscreen, .play {
-    font-size: 20px;
+.volume,
+.rewind,
+.forward,
+.fullscreen,
+.play {
+  font-size: 20px;
 }
 
 .control-btns {
-    display: none;
+  display: none;
 }
 
 .myplayer .control-btns {
-    display: flex;
+  display: flex;
 }
 
-
-.volumebardiv{
-   rotate: -90deg;
-   position: absolute;
-    display: none;
-   top: -60px;
-
+.volumebardiv {
+  rotate: -90deg;
+  position: absolute;
+  display: none;
+  top: -60px;
 }
-
 
 .active {
-    display: block;
+  display: block;
 }
 
 .btn.volume {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .volumebar {
-    display: flex;
-    height: 6px;
-    width: 80px;
-    -webkit-appearance: none;
-    background: linear-gradient(90deg, rgba(230,124,34,1) 0%, #e1e1e1 0%);
-
+  display: flex;
+  height: 6px;
+  width: 80px;
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, rgba(230, 124, 34, 1) 0%, #e1e1e1 0%);
 }
 
 .volumebar::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    background-color: #e67e22;
-    height: 13px;
-    width: 13px;
-    border-radius: 50%;
+  -webkit-appearance: none !important;
+  background-color: #e67e22;
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
 }
 
+#tooltip {
+  /* ... */
+  background-color: rgba(0, 0, 0, 0.367);
+  padding: 5px 15px 5px 15px;
+  margin-top: 120px;
+  border-radius: 7px;
+  display: none;
+  animation-duration: 0.5s;
+  font-size: 14px;
+}
+
+#tooltip[data-show] {
+  display: block;
+  animation-name: opacity;
+  animation-duration: 1s;
+}
+
+.swal-modal {
+  background-color: var(--primary);
+  border-radius: 10px;
+  box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
+}
+
+.swal-button {
+  background-color: var(--secondary);
+}
+
+.swal-button--cancel {
+    color: var(--background);
+}
+
+.swal-title {
+  color: var(--background);
+}
+
+.hidden {
+    display: none;
+}
+
+.swal-text {
+  color: var(--background);
+}
+
+.swal-button:not([disabled]):hover {
+  background-color: var(--accent);
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.faq {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+    margin: 10px;
+  background-color: var(--primary);
+  color: var(--background);
+  border-radius: 70%;
+  padding: 10px 25px;
+  box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
+}
+
+.faq i {
+  font-size: 40px;
+  width: 90px;
+  height: 90px;
+}
+
+.link {
+    box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
+}
 

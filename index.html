@@ -8,10 +8,15 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
   </head>
   <body>
+   
     <div class="myplayer">
-      <video src="./big_buck_bunny.mp4"></video>
+      <video  src="./big_buck_bunny.mp4"></video>
       <div class="player-controls">
         <div class="controls-progressbar">
           <input
@@ -27,6 +32,7 @@
         <div class="control-btns">
           <div class="left">
             <div class="btn play">
+             
               <i class="icon ion-md-play"></i>
             </div>
             <div class="btn rewind">
@@ -45,7 +51,7 @@
             <div class="btn volume">
               <i class="icon ion-md-volume-high"></i>
               <div class="volumebardiv">
-                <input type="range" name="" id="" class="volumebar">
+                <input type="range" name="" id="" class="volumebar" />
               </div>
             </div>
             <div class="btn fullscreen">
@@ -54,15 +60,21 @@
           </div>
         </div>
       </div>
-     
     </div>
+   
 
-      <p class="alert"></p>
-    <input type="text" name="" id="" class="link" placeholder="Your video link">
+    <p class="alert"></p>
+    <input
+      type="text"
+      name=""
+      id=""
+      class="link"
+      placeholder="Your video link" />
     <button class="mode"><i class="ion-ios-moon"></i></button>
     <button class="start">Start</button>
+    <div class="faq">
+      <i class="icon ion-md-help"></i>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
-
-
