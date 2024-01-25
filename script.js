@@ -63,15 +63,20 @@ function videostart() {
 console.log(volvalue);
 
 function playvideo(e) {
+  console.log("Play button clicked");
   vidtime.textContent = gettime(media.duration);
+
   if (media.paused) {
     media.play();
+    console.log("Video playing");
     toggleplay();
   } else {
     toggleplay();
     media.pause();
+    console.log("Video paused");
   }
 }
+
 //  right player btns event listeners
 play.addEventListener("click", playvideo);
 
@@ -157,8 +162,7 @@ volbar.addEventListener("input", function () {
 });
 
 // full screen
-
-fullscreen.addEventListener("click", function () {
+function fullscreenfunction() {
   if (!document.fullscreenElement) {
     if (playerarea.requestFullscreen) {
       playerarea.requestFullscreen();
@@ -171,7 +175,8 @@ fullscreen.addEventListener("click", function () {
       fsrc.classList.replace("ion-md-exit", "ion-md-expand");
     }
   }
-});
+}
+fullscreen.addEventListener("click", fullscreenfunction);
 
 // Hide player options
 
@@ -332,3 +337,5 @@ document.body.addEventListener("keydown", function (event) {
   }
 });
 
+playerarea.addEventListener("dblclick", fullscreenfunction);
+media.addEventListener("click", playvideo);
