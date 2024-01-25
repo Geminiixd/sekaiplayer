@@ -274,7 +274,7 @@ body {
 }
 
 .swal-button--cancel {
-    color: var(--background);
+  color: var(--background);
 }
 
 .swal-title {
@@ -282,7 +282,7 @@ body {
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .swal-text {
@@ -306,7 +306,7 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-    margin: 10px;
+  margin: 10px;
   background-color: var(--primary);
   color: var(--background);
   border-radius: 70%;
@@ -321,6 +321,11 @@ body {
 }
 
 .link {
-    box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
+  box-shadow: 0 0 4px var(--primary), 0 0 48px var(--accent);
 }
 
+@media screen and (max-width: 768px) {
+  video {
+    width: 50%;
+  }
+}

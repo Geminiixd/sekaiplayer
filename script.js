@@ -22,19 +22,15 @@ let modeicon = document.querySelector(".mode .ion-ios-moon");
 let focusmodebtn = document.querySelector(".faq");
 let extraelements = [start, mode, modeicon, link];
 
-let switchmodes =  function() {
+let switchmodes = function () {
   document.body.classList.toggle("dark-mode");
-start.classList.toggle("dark-mode");
-modeicon.classList.toggle("ion-ios-sunny");
-modeicon.classList.toggle("ion-ios-moon");
-modeicon.classList.toggle("light");
-}
+  start.classList.toggle("dark-mode");
+  modeicon.classList.toggle("ion-ios-sunny");
+  modeicon.classList.toggle("ion-ios-moon");
+  modeicon.classList.toggle("light");
+};
 
 mode.addEventListener("click", switchmodes);
-
-
-
-media.style.width = "600px";
 
 start.addEventListener("click", videostart);
 
@@ -65,8 +61,8 @@ function videostart() {
 }
 
 console.log(volvalue);
-//  right player btns event listeners
-play.addEventListener("click", function (e) {
+
+function playvideo(e) {
   vidtime.textContent = gettime(media.duration);
   if (media.paused) {
     media.play();
@@ -75,14 +71,26 @@ play.addEventListener("click", function (e) {
     toggleplay();
     media.pause();
   }
-});
+}
+//  right player btns event listeners
+play.addEventListener("click", playvideo);
+
+function rewindfunction() {
+  media.currentTime = media.currentTime - 15;
+  console.log(media.currentTime);
+}
+
+function forwardfunction() {
+  media.currentTime = media.currentTime + 15;
+  console.log(media.currentTime);
+}
 
 rewind.addEventListener("click", function () {
-  media.currentTime = media.currentTime - 15;
+  rewindfunction();
 });
 
 forward.addEventListener("click", function () {
-  media.currentTime = media.currentTime + 15;
+  forwardfunction();
 });
 
 function toggleplay() {
@@ -161,9 +169,34 @@ fullscreen.addEventListener("click", function () {
     if (document.exitFullscreen) {
       document.exitFullscreen();
       fsrc.classList.replace("ion-md-exit", "ion-md-expand");
-      media.style.width = "600px";
     }
   }
+});
+
+// Hide player options
+
+let timeout;
+
+function hideplayeroptions() {
+  document.querySelector(".player-controls").style.opacity = 0;
+}
+
+function showplayeroptions() {
+  document.querySelector(".player-controls").style.opacity = 1;
+}
+
+function resettimeout() {
+  clearTimeout(timeout);
+  timeout = setTimeout(hideplayeroptions, 3000);
+}
+
+playerarea.addEventListener("mousemove", () => {
+  showplayeroptions();
+  resettimeout();
+});
+
+playerarea.addEventListener("mouseout", () => {
+  hideplayeroptions();
 });
 
 // errors
@@ -227,32 +260,75 @@ if (
   start.classList.toggle("dark-mode");
 }
 
+// shortcuts
 
-// shortcuts 
+let videoplayshortcut = document.body.addEventListener(
+  "keydown",
+  function (event) {
+    if (event.key === "Enter") {
+      videostart();
+    } else {
+    }
+  }
+);
 
-let videoplayshortcut = document.body.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
- videostart()
+document.body.addEventListener("keydown", function (event) {
+  if (event.key === "Shift" && "/") {
+    toggleFocusMode();
+  } else {
   }
-  else {
+});
 
+document.body.addEventListener("keydown", function (event) {
+  if (event.key === "m") {
+    switchmodes();
+  } else {
   }
-})
+});
 
-document.body.addEventListener('keydown', function(event) {
-  if (event.key === 'Shift' && '/') {
-toggleFocusMode()
+document.body.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    playvideo();
+    showplayeroptions();
+    resettimeout();
+  } else {
   }
-  else {
-      
-  }
-})
+});
 
-document.body.addEventListener('keydown', function(event) {
-  if (event.key === 'm') {
-    switchmodes()
+document.body.addEventListener("keydown", function (event) {
+  if (event.code === "ArrowRight") {
+    forwardfunction();
   }
-  else {
-      
+});
+
+document.body.addEventListener("keydown", function (event) {
+  if (event.code === "ArrowLeft") {
+    rewindfunction();
   }
-})
+});
+
+document.body.addEventListener("keydown", function (event) {
+  if (event.code === "ArrowDown") {
+    if (media.volume !== 0) {
+      volbar.value = Math.max(0, volbar.value - 2); // Decrease volbar.value
+      media.volume = volbar.value / 100; // Update media volume based on adjusted value
+      console.log("Volume Down:", volbar.value);
+      console.log("Media Volume:", media.volume);
+    }
+  }
+});
+
+document.body.addEventListener("keydown", function (event) {
+  if (event.code === "ArrowUp") {
+    volbar.value = Math.min(100, volbar.value + 0.2); // Increase volbar.value
+    media.volume = volbar.value / 100; // Update media volume based on adjusted value
+    console.log("Volume Up:", volbar.value);
+    console.log("Media Volume:", media.volume);
+    media.muted = false;
+  }
+
+  if (media.volume === 0) {
+    media.muted = true;
+  }
+});
+
