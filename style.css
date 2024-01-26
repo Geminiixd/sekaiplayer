@@ -341,3 +341,26 @@ body {
     width: 50%;
   }
 }
+
+.thumbnails-container {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 45px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#tooltip {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: -20px;
+  transition: all 0ms;
+}

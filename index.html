@@ -14,9 +14,11 @@
 
   </head>
   <body>
-   
+    
     <div class="myplayer">
+      <div id="tooltip"></div>
       <video  src="./big_buck_bunny.mp4"></video>
+      <div class="thumbnails-container" id="thumbnailsContainer"></div>
       <div class="player-controls">
         <div class="controls-progressbar">
           <input
@@ -27,18 +29,19 @@
             value="1"
             step="0"
             id=""
-            class="current-progressbar" />
+            class="current-progressbar" 
+             />
         </div>
         <div class="control-btns">
           <div class="left">
-            <div class="btn play">
+            <div class="btn play" title="Play (space)">
              
               <i class="icon ion-md-play"></i>
             </div>
-            <div class="btn rewind">
+            <div class="btn rewind" title="rewind 15 seconds (Left Arrow)" >
               <i class="icon ion-md-rewind"></i>
             </div>
-            <div class="btn forward">
+            <div class="btn forward" title="skip 15 seconds (Right Arrow)">
               <i class="icon ion-md-fastforward"></i>
             </div>
             <div class="btn timer">
@@ -48,13 +51,13 @@
             </div>
           </div>
           <div class="right">
-            <div class="btn volume">
+            <div class="btn volume" title="Volume (ArrowUp and Down) Mute (m)">
               <i class="icon ion-md-volume-high"></i>
               <div class="volumebardiv">
                 <input type="range" name="" id="" class="volumebar" />
               </div>
             </div>
-            <div class="btn fullscreen">
+            <div class="btn fullscreen" title="Fulscreen (Double Click)">
               <i class="icon ion-md-expand"></i>
             </div>
           </div>
@@ -70,9 +73,9 @@
       id=""
       class="link"
       placeholder="Your video link" />
-    <button class="mode"><i class="ion-ios-moon"></i></button>
-    <button class="start">Start</button>
-    <div class="faq">
+    <button class="mode" title="Switch Modes"><i class="ion-ios-moon"></i></button>
+    <button class="start" title="Start Playing the entered link (Enter)">Start</button>
+    <div title="Toggle Focus mode (Shift + /)" class="faq"> 
       <i class="icon ion-md-help"></i>
     </div>
     <script src="script.js"></script>

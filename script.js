@@ -201,7 +201,13 @@ playerarea.addEventListener("mousemove", () => {
 });
 
 playerarea.addEventListener("mouseout", () => {
-  hideplayeroptions();
+  if (! media.paused) {
+    hideplayeroptions();
+  }
+
+  else {
+    showplayeroptions()
+  }
 });
 
 // errors
@@ -285,7 +291,7 @@ document.body.addEventListener("keydown", function (event) {
 });
 
 document.body.addEventListener("keydown", function (event) {
-  if (event.key === "m") {
+  if (event.key === "s") {
     switchmodes();
   } else {
   }
@@ -337,5 +343,54 @@ document.body.addEventListener("keydown", function (event) {
   }
 });
 
+document.body.addEventListener("keydown", function (event) {
+  if (event.key === "m") {
+    if (media.muted === true) {
+      media.muted = false;
+      console.log("unmuted");
+    } else {
+      media.muted = true;
+      console.log("muted");
+    }
+  }
+});
+
 playerarea.addEventListener("dblclick", fullscreenfunction);
 media.addEventListener("click", playvideo);
+
+function getMinuteAndSecondFromPosition(position) {
+  const percentage = position / 100;
+  const totalSeconds = media.duration * percentage;
+
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = Math.floor(totalSeconds % 60);
+
+  return { minutes, seconds };
+}
+
+progressbar.addEventListener("mousemove", function (event) {
+  const rect = this.getBoundingClientRect();
+  const offsetX = event.clientX - rect.left;
+  const percentage = offsetX / rect.width;
+
+  const { minutes, seconds } = getMinuteAndSecondFromPosition(percentage * 100);
+  showTooltip(`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+});
+
+// Add a mouseout event listener to hide the tooltip when not hovering over the progress bar
+progressbar.addEventListener("mouseout", function () {
+  hideTooltip();
+});
+
+// Function to show the tooltip at a specific position
+function showTooltip(content) {
+  tooltip.textContent = content;
+  tooltip.style.left = `${event.clientX}px`;
+  tooltip.style.top = `${event.clientY - 30}px`;
+  tooltip.setAttribute("data-show", true);
+}
+
+// Function to hide the tooltip
+function hideTooltip() {
+  tooltip.removeAttribute("data-show");
+}
